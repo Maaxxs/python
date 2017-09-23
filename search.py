@@ -3,15 +3,11 @@ import os
 import sys
 import platform
 
-fail = 0
-matches = 0
-skipped = 0
-totalFiles = 0
-blocked = 0
+fail, matches, skipped, blocked = 0, 0, 0, 0
 
 def main(filePath, pattern):
     global blocked
-    global totalFiles
+    totalFiles = 0
     forbidden = [".jpg", ".jpeg", ".png", ".mkv", ".mp4", ".gif", ".pdf"]
     pf = platform.system()
 
@@ -49,7 +45,6 @@ def searchInFile(fileName, word):
     global matches
     global fail
     global skipped
-    global totalFiles
     try:
         f = open(fileName, 'r')
         for line in f:
